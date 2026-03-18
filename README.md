@@ -76,6 +76,7 @@ Shaily Nieves Adame: Overall, we all worked well as a team. Did our best to comp
 
 Ryan Liao: I managed the Github repository by organizing the branches and formatting the markdowns. I was the main contributor for the data cleaning and modeling, coming up with the main pre-processing strategies and model choice/approach. I always wanted to be ahead of schedule, since I wanted to avoid the Expanse bottlenecks becoming a big issue for us. I also had a hand in reviewing all of the submitted artifacts, as I was the one submitting usually.
 
+Kostya Kravchenko: Contributed by setting up shared directory on expanse and working through Expanse issues during Milestone 1. Most of my contribution was creating code for loading data in a spark friendly way and displaying image examples for each label category. During Milestone 2-3 I ran the slurm scripts to verify the code is working.
 
 ---
 
