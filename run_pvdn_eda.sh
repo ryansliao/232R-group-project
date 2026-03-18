@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=pvdn_model
+#SBATCH --job-name=pvdn_eda
 #SBATCH --account=TG-SEE260003
 #SBATCH --partition=debug
 #SBATCH --nodes=1
@@ -14,14 +14,11 @@ mkdir -p logs
 
 module load singularitypro
 
-# Unset local JAVA_HOME so the container uses its own Java installation
-unset JAVA_HOME
-
 singularity exec \
     --bind /expanse/lustre/projects/uci157 \
-    ~/esolares/singularity_images/spark_py_latest_jupyter_dsc232r.sif \
+    ~/esolares/spark_py_latest_jupyter_dsc232r.sif \
     jupyter nbconvert \
         --to notebook \
-        --execute milestone_3.ipynb \
-        --output milestone_3_executed.ipynb \
+        --execute group_project_p2.ipynb \
+        --output group_project_p2_executed.ipynb \
         --ExecutePreprocessor.timeout=7200

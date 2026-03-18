@@ -15,12 +15,18 @@ ln -sf /expanse/lustre/projects/uci157/$USER
 ln -sf /expanse/lustre/projects/uci157/esolares
 ```
 
-### 2. Fetch the Repo (Assuming it's already cloned)
+### 2. Get the Repo
+
+**First time:**
+```bash
+git clone https://github.com/jestr-collab/232R-group-project.git
+cd 232R-group-project
+```
 
 **Already cloned:**
 ```bash
 cd 232R-group-project
-git fetch origin Milestone3
+git pull origin main
 ```
 
 ### 3. Submit the Job
@@ -97,4 +103,9 @@ DATA_ROOT = /expanse/lustre/projects/uci157/kkravchenko/provident-vehicle-detect
 
 The PVDN dataset was stored on the Lustre parallel filesystem for high-throughput I/O during Spark reads.
 
+### Spark UI - Multiple Executors Active During Data Loading
 
+<img width="1461" height="657" alt="image" src="https://github.com/user-attachments/assets/efeb842c-586a-43b6-86de-8b2bf079d37f" />
+
+
+*Screenshot showing 7 executors actively processing data during the initial JSON annotation load stage.*
