@@ -22,7 +22,7 @@ To achieve proper results, **distributed computing through Spark** is essential.
 
 The first step was to understand how our data behaves through exploratory analysis. We loaded the image data and confirmed the count at ~59k images. We printed the schema to see feature types and the JSON structure. We explored the distribution of the dataset—in particular class imbalance, vehicle stages, and rarity of mid stages. For example, in **Figure 1**, we see a high concentration of one category (first trigger low beam) compared to other categories.
 
-<img width="457" height="228" alt="image" src="https://github.com/user-attachments/assets/d1024362-50dd-4088-8c52-d10cbabff03f" />
+<img width="340" alt="Figure 1: train category distribution" src="figures/train_category_distribution.png" />
 
 Exploratory distribution analysis is critical because Random Forest depends on the structure and balance of the dataset when determining model behavior.
 
@@ -34,7 +34,7 @@ All preprocessing was executed within **Spark DataFrames** to maintain compatibi
 
 We split the data into **44,342** training rows and **7,184** test rows. Class weights were fit by category (**Figures 2–3** in the write-up).
 
-<img width="233" height="236" alt="image" src="https://github.com/user-attachments/assets/117e926f-edd9-46c5-9f10-dd7fb208e5c2" />
+<img width="180" alt="Figure 2: class weights by category" src="figures/class_weights_by_category.png" />
 
 The task was **binary classification**: predicting whether an image contained a vehicle. Using MLlib `RandomForestClassifier`, two models were trained on the feature vector:
 
@@ -45,19 +45,19 @@ The task was **binary classification**: predicting whether an image contained a 
 
 We used **Principal Component Analysis** after a train/test split (**Figure 4**). Preprocessing included missing-value imputation, categorical encoding, vector creation, and scaling. The vector was passed through PCA with **k = 10** components. A binary label indicated whether at least one vehicle is present. The Random Forest classifier used PCA-reduced features.
 
-<img width="209" height="310" alt="image" src="https://github.com/user-attachments/assets/9aa1c6b5-333f-4c19-bd58-003214f3e0b4" />
+<img width="180" alt="Figure 4: PCA pipeline overview" src="figures/pca_pipeline_overview.png" />
 
 **Explained variance (PCA)** — scree and cumulative variance from [`milestone_4.ipynb`](milestone_4.ipynb):
 
-<img width="989" height="390" alt="image" src="https://github.com/user-attachments/assets/88e5461c-b381-46a5-a4e7-0a447a00150b" />
+<img width="760" alt="Explained variance plots from milestone_4.ipynb" src="figures/pca_explained_variance.png" />
 
 ### III. Results
 
 **Model 1 (RF1 / RF2)** and **Model 2 (RF + PCA):** metrics and confusion-style summaries (**Figures 5–8** in the report) are shown below (single composite figure from the notebook export).
 
-<img width="1275" height="176" alt="image" src="https://github.com/user-attachments/assets/19f6d199-e95b-4aaf-a74e-c179d3de5fbe" />
-<img width="879" height="325" alt="image" src="https://github.com/user-attachments/assets/27183e18-32d8-4675-b22f-59b6e3981e44" />
-<img width="575" height="248" alt="image" src="https://github.com/user-attachments/assets/237e2644-2206-4f63-a125-0f96181cab84" />
+<img width="760" alt="Figure 5: composite model metrics summary" src="figures/model_metrics_summary.png" />
+<img width="720" alt="Figure 6: model comparison export" src="figures/model_comparison_export.png" />
+<img width="575" alt="Figure 7: prediction examples summary" src="figures/prediction_examples_summary.png" />
 
 
 Source artifact: [`milestone_4.ipynb`](milestone_4.ipynb) (run outputs).
